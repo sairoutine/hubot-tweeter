@@ -1,7 +1,7 @@
 # Description:
 #   create github issue
 #
-# Command:
+# Commands:
 #  issue your_issue
 #
 # Author:
@@ -13,7 +13,7 @@ module.exports = (robot) ->
   github = require('githubot')(robot)
 
   ## list issue
-  robot.hear /issue$/i, (msg) ->
+  robot.hear /^issue$/i, (msg) ->
     github.get "https://api.github.com/repos/#{repo}/issues", {}, (issues) ->
 
       if (!issues.length)
@@ -27,7 +27,7 @@ module.exports = (robot) ->
       msg.send texts.join '\n'
 
   ## create issue
-  robot.hear /issue (.+)$/mi, (msg) ->
+  robot.hear /^issue (.+)$/mi, (msg) ->
     who = msg.message.user.name
     body = msg.match[1]
     query_param =

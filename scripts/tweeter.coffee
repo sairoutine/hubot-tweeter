@@ -40,7 +40,7 @@ unless config.access_secret
 
 
 module.exports = (robot) ->
-  robot.hear /tw\s(.+)$/i, (msg) ->
+  robot.hear /^tw\s(.+)$/i, (msg) ->
 
     update   = msg.match[1].trim()
 
