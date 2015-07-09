@@ -45,11 +45,11 @@ module.exports = (robot) ->
     update   = msg.match[1].trim()
 
     unless update and update.length > 0
-      msg.reply "ツイートを入力してください。"
+      msg.reply "内容がないぜ"
       return
 
     if update.length > 140
-      msg.reply "メッセージが140字以上あるみたいです。"
+      msg.reply "メッセージは140字までだぜ"
       return
 
     twit = new Twit
@@ -63,10 +63,10 @@ module.exports = (robot) ->
     , (err, reply) ->
       if err
         data = JSON.parse(err.data).errors[0]
-        msg.reply "投稿できませんでした。 #{data.message} (error #{data.code})"
+        msg.reply "投稿に失敗したぜ。 #{data.message} (error #{data.code})"
         return
       if reply['text']
         #return msg.send "#{reply['user']['screen_name']} just tweeted: #{reply['text']}"
-        return
+        return msg.send "投稿しといたぜ"
       else
-        return msg.reply "投稿できませんでした。同じメッセージを投稿してませんか？"
+        return msg.reply "おい、同じメッセージを投稿してないか？"
