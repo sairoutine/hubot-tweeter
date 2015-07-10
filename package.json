@@ -19,7 +19,8 @@
     "hubot-scripts": "~2.16.1",
     "hubot": "~2.13.2",
     "twit": "~1.1.8",
-    "githubot": "*"
+    "githubot": "*",
+	"cron": "^1.0.5"
   },
   "engines": {
     "node": "0.10.x"
