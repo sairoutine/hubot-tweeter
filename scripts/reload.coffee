@@ -21,10 +21,6 @@ oldCommands = null
 oldListeners = null
 
 module.exports = (robot) ->
-
-  robot.hear /command count/i, (msg) ->
-    msg.send "I am aware of #{msg.robot.commands.length} commands"
-
   robot.respond /reload all scripts/i, (msg) ->
     try
       oldCommands = robot.commands
@@ -37,7 +33,7 @@ module.exports = (robot) ->
         msg.send err
     catch error
       console.log "Hubot reloader:", error
-      msg.send "Could not reload all scripts: #{error}"
+      msg.send "おいおい、スクリプトのロードに失敗したぞ #{error}"
 
 success = (msg) ->
   # Cleanup old listeners and help
@@ -45,7 +41,7 @@ success = (msg) ->
     listener = {}
   oldListeners = null
   oldCommands = null
-  msg.send "Reloaded all scripts"
+  msg.send "スクリプトを再起動したぜ"
 
 reloadAllScripts = (msg, success, error) ->
   robot = msg.robot

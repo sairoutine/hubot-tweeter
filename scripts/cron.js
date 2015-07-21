@@ -15,26 +15,20 @@ module.exports = function(robot) {
 			cronTime: mc.time,
 
 			onTick: function() {
-				robot.send({room: "#general"}, myname + " " + mc.message);
+				if (typeof mc.random_rate === 'undefined' || Math.random() < mc.random_rate) {
+					if (mc.message instanceof String) {
+						robot.send({room: "#general"}, myname + " " + mc.message);
+					}
+					else if(mc.message instanceof Array) {
+						var rnd = parseInt(Math.random() * mc.message.length);
+						robot.send({room: "#general"}, myname + " " + mc.message[rnd]);
+					}
+				}
 			},
 
 			start: true,
 			timeZone: "Asia/Tokyo"
 		});
-	});
-
-	/* ランダムなタイミングでつぶやく */
-	new cronJob({
-		cronTime: "0 30 10-18 * * 1-5",
-
-		onTick: function() {
-			if (Math.random() < 0.3){
-				robot.send({room: "#general"}, myname + " " + "進捗どうだ？");
-			}
-		},
-
-		start: true,
-		timeZone: "Asia/Tokyo"
 	});
 
 };
