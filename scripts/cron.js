@@ -16,12 +16,12 @@ module.exports = function(robot) {
 
 			onTick: function() {
 				if (typeof mc.random_rate === 'undefined' || Math.random() < mc.random_rate) {
-					if (mc.message instanceof String) {
-						robot.send({room: "#general"}, myname + " " + mc.message);
-					}
-					else if(mc.message instanceof Array) {
+					if(mc.message instanceof Array) {
 						var rnd = parseInt(Math.random() * mc.message.length);
 						robot.send({room: "#general"}, myname + " " + mc.message[rnd]);
+					}
+					else {
+						robot.send({room: "#general"}, myname + " " + mc.message);
 					}
 				}
 			},
