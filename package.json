@@ -20,7 +20,8 @@
     "hubot": "~2.13.2",
     "twit": "~1.1.8",
     "githubot": "*",
-	"cron": "^1.0.5"
+	"cron": "^1.0.5",
+	"underscore": "*"
   },
   "engines": {
     "node": "0.10.x"
