@@ -26,7 +26,9 @@ module.exports = function(robot) {
 	new CronJob({
 		cronTime: '*/10 * * * *',
 		onTick: function(){
-			var last_id = robot.brain.get(BRAIN_KEY) || 0;
+			var last_id = robot.brain.get(BRAIN_KEY);
+
+			if(!last_id){ last_id = 626244578362789888; }
 
 			T.get('statuses/home_timeline', {
 			  since_id: last_id,
@@ -40,7 +42,13 @@ module.exports = function(robot) {
 					if(tweet.id > last_id){
 						new_last_id = tweet.id;
 
-						robot.send({room: "#timeline"}, "https://twitter.com/" + tweet.user.id_str + "/status/" + tweet.id_str);
+						/* リツイートは表示しない */
+						if(tweet.retweeted === false){
+							robot.send(
+								{room: "#timeline"},
+								"https://twitter.com/" + tweet.user.id_str + "/status/" + tweet.id_str
+							);
+						}
 					}
 				});
 
