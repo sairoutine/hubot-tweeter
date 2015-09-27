@@ -21,7 +21,8 @@
     "twit": "~1.1.8",
     "githubot": "*",
 	"cron": "^1.0.5",
-	"underscore": "*"
+	"underscore": "*",
+	"mysql": "*"
   },
   "engines": {
     "node": "0.10.x"

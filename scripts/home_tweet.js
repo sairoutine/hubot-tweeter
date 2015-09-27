@@ -43,11 +43,15 @@ module.exports = function(robot) {
 						new_last_id = tweet.id;
 
 						/* リツイートは表示しない */
-						if(tweet.retweeted === false){
+						if( ! tweet.text.match(/^RT/)){
 							robot.send(
 								{room: "#timeline"},
 								"https://twitter.com/" + tweet.user.id_str + "/status/" + tweet.id_str
 							);
+						}
+						else{
+							//console.log("retweet: https://twitter.com/" + tweet.user.id_str + "/status/" + tweet.id_str);
+
 						}
 					}
 				});

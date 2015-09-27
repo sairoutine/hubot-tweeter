@@ -1,8 +1,8 @@
 /* hubot と会話を楽しむためのもろもろ */
 /*
 module.exports = function (robot) {
-	robot.hear(/^(.+)$/i, function(msg) {
-		msg.send('"' + msg.match[0] + '"' + "だぜ");
+	robot.hear(/^魔理沙$/i, function(msg) {
+		msg.send('呼んだか？');
 		return;
 	});
 };
