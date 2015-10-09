@@ -1,4 +1,4 @@
-var myname  = "@sairoutine";
+var myname  = "";
 var cronJob = require('cron').CronJob;
 
 /* 定期的につぶやく内容一覧 */
