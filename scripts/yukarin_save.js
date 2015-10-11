@@ -21,7 +21,7 @@ module.exports = function (robot) {
 
 		/* MYSQLへの接続を確立 */
 		var mysql = require('mysql').createConnection({
-			host     : 'yukarin',
+			host     : 'localhost',
 			user     : 'root',
 			password : '',
 			database : 'yukarin'
