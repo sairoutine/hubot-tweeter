@@ -1,5 +1,13 @@
 # SETUP
 ```
+# redis install
+sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+sudo yum --enablerepo=remi,remi-test install -y redis
+sudo chkconfig --add redis
+sudo chkconfig --level 345 redis on
+sudo service redis start
+
 git clone https://github.com/sairoutine/marisa-bot.git
 vim ./start_hubot.sh
 chmod 0700 ./start_hubot.sh
