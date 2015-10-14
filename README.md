@@ -11,6 +11,7 @@ sudo service redis start
 git clone https://github.com/sairoutine/marisa-bot.git
 vim ./start_hubot.sh
 chmod 0700 ./start_hubot.sh
+mkdir /var/log/hubot
 sudo npm install -g forever
 # run!
 ./start_hubot.sh
