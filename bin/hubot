@@ -5,4 +5,4 @@ set -e
 npm install
 export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
 
-forever start -l /var/log/hubot/marisa.log -c coffee node_modules/.bin/hubot --name "marisa" "$@"
+forever start -a -l /var/log/hubot/marisa.log -c coffee node_modules/.bin/hubot --name "marisa" "$@"
