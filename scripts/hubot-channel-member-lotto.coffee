@@ -12,12 +12,18 @@ module.exports = (robot) ->
 		channel_name = msg.message.room
 
 		channel_info = slack.getChannelByName(channel_name);
-     if ( ! channel_info )
-      return
 
 		users = []
+
+		if ( ! channel_info )
+			return
+
 		channel_info.members.forEach (user_id) =>
+			# ignore deleted member
+			if (slack.users[user_id].deleted)
+				return
+
 			users.push slack.users[user_id].name
 
 		chosen_user = msg.random users
-		return msg.send chosen_user
+		return msg.send "<@#{chosen_user}>"
