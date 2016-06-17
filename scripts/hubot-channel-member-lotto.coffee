@@ -12,6 +12,8 @@ module.exports = (robot) ->
 		channel_name = msg.message.room
 
 		channel_info = slack.getChannelByName(channel_name);
+     if ( ! channel_info )
+      return
 
 		users = []
 		channel_info.members.forEach (user_id) =>
